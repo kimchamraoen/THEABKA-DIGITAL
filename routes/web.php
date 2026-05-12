@@ -9,8 +9,19 @@ use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\Admin\ChatbotSettingsController;
 use App\Http\Controllers\Admin\IconSettingsController;
 use App\Http\Controllers\Admin\NavLabelController;
+use App\Http\Controllers\TelegramConnectController;
+use App\Http\Controllers\TelegramController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\SuperAdminMiddleware;
+use App\Livewire\User\InvitationWedding as ModelInvitationWedding   ;
+use App\Livewire\User\Dashboard;
+use App\Livewire\User\DefauldLandingWedding;
+use App\Livewire\User\DefauldWedding;
+use App\Livewire\User\Guest as UserGuest;
+use App\Livewire\User\Invitation;
+use App\Livewire\User\Template;
+use App\Livewire\User\TemplateBirthday;
+use App\Models\Guest;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -125,9 +136,36 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('livewire.user.dashboard');
+    // })->name('dashboard');
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
+
+    Route::get('/guests', UserGuest::class)->name('guest');
+
+    Route::get('/wedding/{uuid}', \App\Livewire\User\LandingWedding::class)->name('wedding.landing');
+
+    Route::get('/profit', \App\Livewire\User\Profit::class)->name('profit');
+
+    Route::get('/expenses', \App\Livewire\User\Expence::class)->name('expense');
+
+    Route::get('/invitations', \App\Livewire\User\Invitation::class)->name('invitation');
+
+    Route::get('/invitation/guest/{uuid}', \App\Livewire\User\LandingWedding::class)->name('wedding.form');
+    Route::get('/invitation/guest/{uuid}/detail', \App\Livewire\Components\WeddingForm::class)->name('wedding.form.guest');
+
+    Route::get('/telegram/connect/{template_id}', [TelegramConnectController::class, 'connectTelegram']);
+
+    Route::get('/incomes', \App\Livewire\User\Income::class)->name('income');
+
+    Route::get('/invitation', Template::class)->name('wedding');
+
+    Route::get('/invitation/default-landing', DefauldLandingWedding::class)->name('invitation.default-landing-wedding');
+    Route::get('/invitation/default', DefauldWedding::class)->name('invitation.wedding');
+
+    Route::get('/invitation/birthday', TemplateBirthday::class)->name('birthday');
+
+    Route::get('/greeting', \App\Livewire\User\Greeting::class)->name('greeting');
 });
 
 /*

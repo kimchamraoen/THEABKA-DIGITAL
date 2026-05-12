@@ -37,6 +37,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="{{ $fontUrl }}" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
         <!-- GSAP -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -167,6 +168,7 @@
         @include('partials.cookie-banner')
 
         @livewireScripts
+        @stack('scripts')
 
         {{-- GSAP Auth Animations --}}
         <script>

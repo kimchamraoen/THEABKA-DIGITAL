@@ -189,6 +189,153 @@
                 </a>
                 @endif
 
+                {{-- Invitation --}}
+                @if (is_nav_visible('sidebar.invitation'))
+                <a href="{{ route('invitation') }}" wire:navigate
+                    class="flex items-center transition-all duration-200 group
+                            {{ request()->routeIs('invitation') ? '' : 'hover:bg-white/8' }}"
+                    :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center px-1 py-2.5'"
+                    style="order: {{ get_nav_sort_order('sidebar.invitation', 10) }}; border-radius: var(--sb-active-radius); {{ request()->routeIs('invitation') ? 'background: var(--sb-active-bg); border: 1px solid var(--sb-active-border);' : 'border: 1px solid transparent;' }}"
+                    :title="!sidebarOpen ? '{{ get_nav_label('sidebar.invitation', __('app.nav.invitation')) }}' : ''">
+                
+                    <!-- Compact Envelope Icon -->
+                    <div class="rounded-lg flex items-center justify-center shrink-0
+                                {{ request()->routeIs('invitation') ? 'bg-blue-500/20 text-blue-400' : 'text-white/50 group-hover:text-white/80' }}"
+                        style="width: var(--sb-icon-wrap); height: var(--sb-icon-wrap)">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <polyline points="2,5 12,13 22,5" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+
+                    <span x-show="sidebarOpen" :class="ready ? 'transition-all duration-250 ease-out' : ''" 
+                        class="font-medium whitespace-nowrap {{ request()->routeIs('invitation') ? '' : 'opacity-70 group-hover:opacity-100' }}" 
+                        style="font-size: var(--sb-font)">
+                        {{ get_nav_label('sidebar.invitation', __('app.nav.invitation')) }}
+                    </span>
+                </a>
+                @endif
+                
+                {{-- Guest --}}
+                @if (is_nav_visible('sidebar.guest'))
+                <a href="{{ route('guest') }}" wire:navigate
+                    class="flex items-center transition-all duration-200 group
+                        {{ request()->routeIs('guest') ? '' : 'hover:bg-white/8' }}"
+                    :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center px-1 py-2.5'"
+                    style="order: {{ get_nav_sort_order('sidebar.guest', 20) }}; border-radius: var(--sb-active-radius); {{ request()->routeIs('guest') ? 'background: var(--sb-active-bg); border: 1px solid var(--sb-active-border);' : 'border: 1px solid transparent;' }}"
+                    :title="!sidebarOpen ? '{{ get_nav_label('sidebar.guest', __('app.nav.guest')) }}' : ''">
+
+                    <!-- Users Icon using Font Awesome -->
+                    <div class="rounded-lg flex items-center justify-center shrink-0
+                                {{ request()->routeIs('guest') ? 'bg-blue-500/20 text-blue-400' : 'text-white/50 group-hover:text-white/80' }}"
+                        style="width: var(--sb-icon-wrap); height: var(--sb-icon-wrap)">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <span x-show="sidebarOpen" :class="ready ? 'transition-all duration-250 ease-out' : ''" 
+                        class="font-medium whitespace-nowrap {{ request()->routeIs('guest') ? '' : 'opacity-70 group-hover:opacity-100' }}" 
+                        style="font-size: var(--sb-font)">
+                        {{ get_nav_label('sidebar.guests', __('app.nav.guests')) }}
+                    </span>
+                </a>
+                @endif
+
+                {{-- Expense --}}
+                @if (is_nav_visible('sidebar.expense'))
+                <a href="{{ route('expense') }}" wire:navigate
+                    class="flex items-center transition-all duration-200 group
+                        {{ request()->routeIs('expense') ? '' : 'hover:bg-white/8' }}"
+                    :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center px-1 py-2.5'"
+                    style="order: {{ get_nav_sort_order('sidebar.expense', 20) }}; border-radius: var(--sb-active-radius); {{ request()->routeIs('expense') ? 'background: var(--sb-active-bg); border: 1px solid var(--sb-active-border);' : 'border: 1px solid transparent;' }}"
+                    :title="!sidebarOpen ? '{{ get_nav_label('sidebar.expense', __('app.nav.expense')) }}' : ''">
+
+                    <!-- Users Icon using Font Awesome -->
+                    <div class="rounded-lg flex items-center justify-center shrink-0
+                                {{ request()->routeIs('expense') ? 'bg-blue-500/20 text-blue-400' : 'text-white/50 group-hover:text-white/80' }}"
+                        style="width: var(--sb-icon-wrap); height: var(--sb-icon-wrap)">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+
+                    <span x-show="sidebarOpen" :class="ready ? 'transition-all duration-250 ease-out' : ''" 
+                        class="font-medium whitespace-nowrap {{ request()->routeIs('expense') ? '' : 'opacity-70 group-hover:opacity-100' }}" 
+                        style="font-size: var(--sb-font)">
+                        {{ get_nav_label('sidebar.expense', __('app.nav.expense')) }}
+                    </span>
+                </a>
+                @endif
+
+                {{-- Income --}}
+                @if (is_nav_visible('sidebar.income'))
+                <a href="{{ route('income') }}" wire:navigate
+                    class="flex items-center transition-all duration-200 group
+                        {{ request()->routeIs('income') ? '' : 'hover:bg-white/8' }}"
+                    :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center px-1 py-2.5'"
+                    style="order: {{ get_nav_sort_order('sidebar.income', 20) }}; border-radius: var(--sb-active-radius); {{ request()->routeIs('income') ? 'background: var(--sb-active-bg); border: 1px solid var(--sb-active-border);' : 'border: 1px solid transparent;' }}"
+                    :title="!sidebarOpen ? '{{ get_nav_label('sidebar.income', __('app.nav.income')) }}' : ''">
+
+                    <!-- Users Icon using Font Awesome -->
+                    <div class="rounded-lg flex items-center justify-center shrink-0
+                                {{ request()->routeIs('income') ? 'bg-blue-500/20 text-blue-400' : 'text-white/50 group-hover:text-white/80' }}"
+                        style="width: var(--sb-icon-wrap); height: var(--sb-icon-wrap)">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                    </div>
+
+                    <span x-show="sidebarOpen" :class="ready ? 'transition-all duration-250 ease-out' : ''" 
+                        class="font-medium whitespace-nowrap {{ request()->routeIs('income') ? '' : 'opacity-70 group-hover:opacity-100' }}" 
+                        style="font-size: var(--sb-font)">
+                        {{ get_nav_label('sidebar.income', __('app.nav.income')) }}
+                    </span>
+                </a>
+                @endif
+
+                {{-- Profit --}}
+                @if (is_nav_visible('sidebar.profit'))
+                <a href="{{ route('profit') }}" wire:navigate
+                    class="flex items-center transition-all duration-200 group
+                        {{ request()->routeIs('profit') ? '' : 'hover:bg-white/8' }}"
+                    :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center px-1 py-2.5'"
+                    style="order: {{ get_nav_sort_order('sidebar.profit', 20) }}; border-radius: var(--sb-active-radius); {{ request()->routeIs('profit') ? 'background: var(--sb-active-bg); border: 1px solid var(--sb-active-border);' : 'border: 1px solid transparent;' }}"
+                    :title="!sidebarOpen ? '{{ get_nav_label('sidebar.profit', __('app.nav.profit')) }}' : ''">
+
+                    <!-- Users Icon using Font Awesome -->
+                    <div class="rounded-lg flex items-center justify-center shrink-0
+                                {{ request()->routeIs('profit') ? 'bg-blue-500/20 text-blue-400' : 'text-white/50 group-hover:text-white/80' }}"
+                        style="width: var(--sb-icon-wrap); height: var(--sb-icon-wrap)">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+
+                    <span x-show="sidebarOpen" :class="ready ? 'transition-all duration-250 ease-out' : ''" 
+                        class="font-medium whitespace-nowrap {{ request()->routeIs('profit') ? '' : 'opacity-70 group-hover:opacity-100' }}" 
+                        style="font-size: var(--sb-font)">
+                        {{ get_nav_label('sidebar.profit', __('app.nav.profit')) }}
+                    </span>
+                </a>
+                @endif
+
+                {{-- Greeting --}}
+                @if (is_nav_visible('sidebar.greeting'))
+                <a href="{{ route('greeting') }}" wire:navigate
+                    class="flex items-center transition-all duration-200 group
+                        {{ request()->routeIs('greeting') ? '' : 'hover:bg-white/8' }}"
+                    :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center px-1 py-2.5'"
+                    style="order: {{ get_nav_sort_order('sidebar.greeting', 20) }}; border-radius: var(--sb-active-radius); {{ request()->routeIs('greeting') ? 'background: var(--sb-active-bg); border: 1px solid var(--sb-active-border);' : 'border: 1px solid transparent;' }}"
+                    :title="!sidebarOpen ? '{{ get_nav_label('sidebar.greeting', __('app.nav.greeting')) }}' : ''">
+
+                    <!-- Users Icon using Font Awesome -->
+                    <div class="rounded-lg flex items-center justify-center shrink-0
+                                {{ request()->routeIs('greeting') ? 'bg-blue-500/20 text-blue-400' : 'text-white/50 group-hover:text-white/80' }}"
+                        style="width: var(--sb-icon-wrap); height: var(--sb-icon-wrap)">
+                        <i class="fa-solid fa-envelopes-bulk"></i>
+                    </div>
+
+                    <span x-show="sidebarOpen" :class="ready ? 'transition-all duration-250 ease-out' : ''" 
+                        class="font-medium whitespace-nowrap {{ request()->routeIs('greeting') ? '' : 'opacity-70 group-hover:opacity-100' }}" 
+                        style="font-size: var(--sb-font)">
+                        {{ get_nav_label('sidebar.greeting', __('app.nav.greeting')) }}
+                    </span>
+                </a>
+                @endif
+
                 {{-- Chatbot --}}
                 @if (is_nav_visible('sidebar.chatbot'))
                 <a href="{{ route('chatbot.index') }}"
@@ -239,6 +386,7 @@
                     <span x-show="sidebarOpen" :class="ready ? 'transition-all duration-250 ease-out' : ''" class="font-medium whitespace-nowrap {{ request()->routeIs('documentation') ? '' : 'opacity-70 group-hover:opacity-100' }}" style="font-size: var(--sb-font)">{{ get_nav_label('sidebar.docs', __('app.nav.docs')) }}</span>
                 </a>
                 @endif
+                
 
                 {{-- Admin Settings --}}
                 @if (auth()->user()->isSuperAdmin() || auth()->user()->isAdmin())
